@@ -19,9 +19,15 @@ const router = createRouter({
   routes: [
     {
       name: 'character',
-      path: '/',
-      alias: ['/character'],
+      path: '/character',
+      alias: [],
       component: () => import('./pages/Character.vue'),
+    },
+    {
+      name: 'characterWork',
+      path: '/characterWork',
+      alias: ['/'],
+      component: () => import('./pages/CharacterWork.vue'),
     },
   ],
 })
