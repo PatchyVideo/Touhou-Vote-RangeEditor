@@ -22,7 +22,7 @@
           <label>试听：</label>
           <button
             class="flex items-center px-3 md:px-5 py-1 shadow rounded text-sm md:text-base"
-            :class="{ 'ring ring-red-600': musicPlaying === item.music }"
+            :class="{ 'bg-red-600 text-white': musicPlaying === item.music }"
             @click="playAudio(item.music)"
           >
             <label v-if="musicPlaying === item.music && musicLoading" class="animate-spin"
