@@ -4,18 +4,24 @@
 
 ## 如何在本地启动项目
 
-```
+```shell
 # 拉取项目
 $ git clone https://github.com/PatchyVideo/Touhou-Vote-RangeEditor.git
 $ cd Touhou-Vote-RangeEditor
 
 # 安装依赖
 $ pnpm i
+
+# 启动本地调试
+$ pnpm dev
+
+# 构建
+$ pnpm build
 ```
 
 ## 相关项目
 
-```
+```shell
 # 投票项目前端
 https://github.com/PatchyVideo/Touhou-Vote
 
