@@ -107,7 +107,7 @@
             v-model="characterTemp.date"
             maxlength="1000"
             class="w-full bg-transparent border rounded rounded px-2 py-1"
-            placeholder="八位数字链接"
+            placeholder="八位数字"
             type="text"
           />
         </div>

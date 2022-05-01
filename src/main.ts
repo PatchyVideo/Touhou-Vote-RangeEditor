@@ -20,14 +20,26 @@ const router = createRouter({
     {
       name: 'character',
       path: '/character',
-      alias: [],
+      alias: ['/'],
       component: () => import('./pages/Character.vue'),
     },
     {
       name: 'characterWork',
       path: '/characterWork',
-      alias: ['/'],
+      alias: [],
       component: () => import('./pages/CharacterWork.vue'),
+    },
+    {
+      name: 'music',
+      path: '/music',
+      alias: [],
+      component: () => import('./pages/Music.vue'),
+    },
+    {
+      name: 'musicWork',
+      path: '/musicWork',
+      alias: [],
+      component: () => import('./pages/MusicWork.vue'),
     },
   ],
 })
