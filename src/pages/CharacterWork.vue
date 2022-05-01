@@ -36,7 +36,6 @@
         <div class="flex items-center py-1 px-2">
           <label class="whitespace-nowrap">作品中文名：</label>
           <input
-            ref="reasonInput"
             v-model="workCharacterTemp.name"
             maxlength="1000"
             class="w-full bg-transparent border rounded rounded px-2 py-1"
@@ -59,13 +58,12 @@
     <div v-if="open" class="fixed inset-0 bg-black bg-opacity-20 z-50" @touchmove.stop.prevent></div>
   </Transition>
 
-  <router-link
-    to="/outPut"
+  <button
     class="fixed flex items-center bottom-10 left-5 px-4 py-2 shadow rounded bg-yellow-300 text-sm md:text-base md:left-10"
     @click="outPutRes()"
   >
     导出为文件
-  </router-link>
+  </button>
 </template>
 
 <script lang="ts" setup>
@@ -75,7 +73,7 @@ import VoteSelect from '../components/VoteSelect.vue'
 
 const aciveIndex = ref(0)
 const workCharacterListTemp = ref<Work[]>(workCharacterList)
-const workCharacterTemp = ref<Work>(workCharacterListTemp.value[0])
+const workCharacterTemp = ref<Work>(JSON.parse(JSON.stringify(workCharacterListTemp.value[0])))
 const workCharacterKindTemp = ref<SelectList>(
   kindList.find((item) => item.value === workCharacterTemp.value.kind) || kindList[0]
 )
@@ -91,7 +89,7 @@ watchEffect(() => {
 
 function edit(index: number): void {
   aciveIndex.value = index
-  workCharacterTemp.value = workCharacterListTemp.value[aciveIndex.value]
+  workCharacterTemp.value = JSON.parse(JSON.stringify(workCharacterListTemp.value[aciveIndex.value]))
   open.value = true
 }
 function confirmEdit(): void {

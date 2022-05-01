@@ -12,12 +12,12 @@ export class Character {
   work: string[]
   constructor(
     id = '',
-    name = 'ERROR',
+    name = '',
     altnames: string[] = [],
-    title = '原初的错误',
-    image = 'https://thwiki.cc/favicon.ico',
-    color = '#000000',
-    reason = '相遇，只是再度重逢',
+    title = '',
+    image = '',
+    color = '',
+    reason = '',
     date = 19961103,
     honmei = false,
     kind: ('old' | 'new' | 'book' | 'CD' | 'others' | '')[] = ['others'],
