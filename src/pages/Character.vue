@@ -74,7 +74,7 @@
         <div class="flex items-center py-1 px-2">
           <label class="whitespace-nowrap">别名：</label>
           <input
-            v-model="characterTemp.altnames[0]"
+            v-model="characterTempAlternames"
             maxlength="1000"
             class="w-full bg-transparent border rounded rounded px-2 py-1"
             placeholder="别名（用空格隔开）"
@@ -165,7 +165,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { Character, characterList } from '../lib/character'
 import { workCharacterList, kindList } from '../lib/characterWork'
 import defaultCharacterImage from '../assets/defaultCharacterImage.png?url'
@@ -173,6 +173,14 @@ import defaultCharacterImage from '../assets/defaultCharacterImage.png?url'
 const aciveIndex = ref(0)
 const characterListTemp = ref<Character[]>(characterList)
 const characterTemp = ref<Character>(JSON.parse(JSON.stringify(characterListTemp.value[0])))
+const characterTempAlternames = computed<string>({
+  get() {
+    return characterTemp.value.altnames.join(' ')
+  },
+  set(value) {
+    characterTemp.value.altnames = value.split(' ')
+  },
+})
 
 function updateCharacterKind(kind: 'old' | 'new' | 'book' | 'CD' | 'others' | ''): void {
   const index = characterTemp.value.kind.findIndex((item) => item === kind)
@@ -208,7 +216,6 @@ function edit(index: number): void {
   open.value = true
 }
 function confirmEdit(): void {
-  characterTemp.value.altnames = characterTemp.value.altnames[0].split(' ')
   characterListTemp.value[aciveIndex.value] = characterTemp.value
   close()
 }
