@@ -74,7 +74,7 @@
         <div class="flex items-center py-1 px-2">
           <label class="whitespace-nowrap">别名：</label>
           <input
-            v-model="characterTemp.altnames"
+            v-model="characterTemp.altnames[0]"
             maxlength="1000"
             class="w-full bg-transparent border rounded rounded px-2 py-1"
             placeholder="别名（用空格隔开）"
@@ -208,6 +208,7 @@ function edit(index: number): void {
   open.value = true
 }
 function confirmEdit(): void {
+  characterTemp.value.altnames = characterTemp.value.altnames[0].split(' ')
   characterListTemp.value[aciveIndex.value] = characterTemp.value
   close()
 }
